@@ -51,7 +51,7 @@ $ nest generate module [name-of-module]
 
 ```bash
 # development
-$ nest generate controlelr [name-of-controller]
+$ nest generate controller [name-of-controller]
 ```
 
 ## Test
