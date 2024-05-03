@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString, MaxLength, MinLength } from "class-validator";
+import { IsEnum, IsNotEmpty, IsString, MaxLength, MinLength } from "class-validator";
 import { Gender } from "../../common/Gender";
 
 export class CreateClientDto {
@@ -8,7 +8,7 @@ export class CreateClientDto {
   @MaxLength(300)
   name: string;
 
-  @IsString()
+  @IsEnum(Gender, { message: "Use a valid gender" })
   @IsNotEmpty()
   gender: Gender;
 }
