@@ -2,10 +2,20 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Installation
+Project integrates with MongoDB and uses the NestJS framework to create a REST API.
+For that it was necessary to add the following dependencies:
+```
+@nestjs/mongoose mongoose
+```
 
-```bash
-$ pnpm install
+And add the database Module to the app.module.ts file:
+```typescript
+MongooseModule.forRoot('mongodb://localhost/nest')
+```
+
+For validatig the client Payload, the following dependency was added:
+```
+class-validator class-transformer
 ```
 
 ## Running the app
@@ -21,6 +31,29 @@ $ pnpm run start:dev
 $ pnpm run start:prod
 ```
 
+The Nest CLI provides an interesting tool we can use to generate files for us and thus make the development faster
+```bash
+cd src && nest g resource
+```
+The command above will prompt some options in the terminal.
+
+nest g resource command not only generates all the NestJS building blocks (module, service, controller classes) but also an entity class, DTO classes as well as the testing (.spec) files
+
+
+## Generating new modules
+
+```bash
+# development
+$ nest generate module [name-of-module]
+```
+
+## Generating new Controllers
+
+```bash
+# development
+$ nest generate controlelr [name-of-controller]
+```
+
 ## Test
 
 ```bash
@@ -34,11 +67,6 @@ $ pnpm run test:e2e
 $ pnpm run test:cov
 ```
 
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the
-amazing backers. If you'd like to join them,
-please [read more here](https://docs.nestjs.com/support).
 
 ## Stay in touch
 
