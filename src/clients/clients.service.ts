@@ -1,9 +1,10 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, NotFoundException } from "@nestjs/common";
 import { CreateClientDto } from "./dto/create-client.dto";
 import { UpdateClientDto } from "./dto/update-client.dto";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
 import { Client, ClientDocument } from "./schemas/client.schema";
+import { Gender } from "../common/Gender";
 
 @Injectable()
 export class ClientsService {
@@ -22,7 +23,7 @@ export class ClientsService {
     return this.clientModel.find();
   }
 
-  findOne(id: number) {
+  findOne(id: string) {
     return this.clientModel.findById(id);
   }
 
@@ -32,5 +33,14 @@ export class ClientsService {
 
   remove(id: number) {
     return this.clientModel.findByIdAndDelete(id);
+  }
+
+  getAllByGender(gender: Gender) {
+
+    if (gender) {
+      return this.clientModel.find({ gender: gender }).exec();
+    }
+
+    return this.clientModel.find().exec();
   }
 }
