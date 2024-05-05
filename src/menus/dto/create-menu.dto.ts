@@ -3,8 +3,8 @@ import {
   IsString,
   IsNumber,
   MaxLength,
-  MinLength
-} from "class-validator";
+  MinLength,
+} from 'class-validator';
 
 export class CreateMenuDto {
   @IsString()

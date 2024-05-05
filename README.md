@@ -60,6 +60,14 @@ $ nest generate module [name-of-module]
 $ nest generate controller [name-of-controller]
 ```
 
+## After adding a new Dependency
+
+```bash
+# development
+$ docker-compose down
+$ docker-compose up --build
+```
+
 ## Test
 
 ```bash

@@ -1,11 +1,11 @@
-import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { Document } from "mongoose";
-import { Gender } from "../../common/Gender";
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Document } from 'mongoose';
+import { Gender } from '../../common/Gender';
 
 export type ClientDocument = Client & Document;
 
 @Schema({
-  timestamps: { createdAt: "created", updatedAt: "updated" }
+  timestamps: { createdAt: 'created', updatedAt: 'updated' },
 })
 export class Client {
   @Prop({ required: true })

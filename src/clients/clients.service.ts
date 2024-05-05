@@ -1,17 +1,17 @@
-import { Injectable, NotFoundException } from "@nestjs/common";
-import { CreateClientDto } from "./dto/create-client.dto";
-import { UpdateClientDto } from "./dto/update-client.dto";
-import { InjectModel } from "@nestjs/mongoose";
-import { Model } from "mongoose";
-import { Client, ClientDocument } from "./schemas/client.schema";
-import { Gender } from "../common/Gender";
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { CreateClientDto } from './dto/create-client.dto';
+import { UpdateClientDto } from './dto/update-client.dto';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import { Client, ClientDocument } from './schemas/client.schema';
+import { Gender } from '../common/Gender';
 
 @Injectable()
 export class ClientsService {
   constructor(
-    @InjectModel(Client.name) private readonly clientModel: Model<ClientDocument>
-  ) {
-  }
+    @InjectModel(Client.name)
+    private readonly clientModel: Model<ClientDocument>,
+  ) {}
 
   create(createClientDto: CreateClientDto): Promise<ClientDocument> {
     const client = new this.clientModel(createClientDto);
@@ -27,7 +27,10 @@ export class ClientsService {
     return this.clientModel.findById(id);
   }
 
-  update(id: number, updateClientDto: UpdateClientDto): Promise<ClientDocument> {
+  update(
+    id: number,
+    updateClientDto: UpdateClientDto,
+  ): Promise<ClientDocument> {
     return this.clientModel.findByIdAndUpdate(id);
   }
 
@@ -36,7 +39,6 @@ export class ClientsService {
   }
 
   getAllByGender(gender: Gender) {
-
     if (gender) {
       return this.clientModel.find({ gender: gender }).exec();
     }
