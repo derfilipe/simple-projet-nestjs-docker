@@ -1,16 +1,15 @@
-import { Injectable } from "@nestjs/common";
-import { CreateMenuDto } from "./dto/create-menu.dto";
-import { UpdateMenuDto } from "./dto/update-menu.dto";
-import { InjectModel } from "@nestjs/mongoose";
-import { Menu, MenuDocument } from "./schemas/menu.schema";
-import { Model } from "mongoose";
+import { Injectable } from '@nestjs/common';
+import { CreateMenuDto } from './dto/create-menu.dto';
+import { UpdateMenuDto } from './dto/update-menu.dto';
+import { InjectModel } from '@nestjs/mongoose';
+import { Menu, MenuDocument } from './schemas/menu.schema';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class MenusService {
   constructor(
-    @InjectModel(Menu.name) private readonly menuModel: Model<MenuDocument>
-  ) {
-  }
+    @InjectModel(Menu.name) private readonly menuModel: Model<MenuDocument>,
+  ) {}
 
   async create(createMenuDto: CreateMenuDto): Promise<MenuDocument> {
     const menu = new this.menuModel(createMenuDto);
@@ -27,7 +26,7 @@ export class MenusService {
 
   async update(
     id: string,
-    updateMenuDto: UpdateMenuDto
+    updateMenuDto: UpdateMenuDto,
   ): Promise<MenuDocument> {
     return this.menuModel.findByIdAndUpdate(id, updateMenuDto);
   }
