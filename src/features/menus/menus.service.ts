@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { CreateMenuDto } from './dto/create-menu.dto';
-import { UpdateMenuDto } from './dto/update-menu.dto';
 import { InjectModel } from '@nestjs/mongoose';
 import { Menu, MenuDocument } from './schemas/menu.schema';
 import { Model } from 'mongoose';
+import { CreateMenusDto } from './dto/inputs/create-menus.dto';
+import { UpdateMenusDto } from './dto/inputs/update-menus.dto';
 
 @Injectable()
 export class MenusService {
@@ -11,7 +11,7 @@ export class MenusService {
     @InjectModel(Menu.name) private readonly menuModel: Model<MenuDocument>,
   ) {}
 
-  async create(createMenuDto: CreateMenuDto): Promise<MenuDocument> {
+  async create(createMenuDto: CreateMenusDto): Promise<MenuDocument> {
     const menu = new this.menuModel(createMenuDto);
     return menu.save();
   }
@@ -26,12 +26,24 @@ export class MenusService {
 
   async update(
     id: string,
-    updateMenuDto: UpdateMenuDto,
+    updateMenuDto: UpdateMenusDto,
   ): Promise<MenuDocument> {
     return this.menuModel.findByIdAndUpdate(id, updateMenuDto);
   }
 
-  async remove(id: number) {
+  async getMenus() {
+    const MenuDocument = await this.menuModel.find({});
+    return MenuDocument.map((todo) => this.toModel(todo));
+  }
+
+  async remove(id: string) {
     return this.menuModel.findByIdAndDelete(id);
+  }
+
+  private toModel(menuDocument: MenuDocument) {
+    return {
+      _id: menuDocument._id.toHexString(),
+      ...menuDocument,
+    };
   }
 }
