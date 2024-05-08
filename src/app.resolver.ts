@@ -1,4 +1,4 @@
-import { AppService } from './app.service';
+import { AppService } from './core/app.service';
 import { Resolver, Query } from '@nestjs/graphql';
 
 @Resolver()

@@ -72,3 +72,25 @@ $ pnpm run test:e2e
 # test coverage
 $ pnpm run test:cov
 ```
+
+## Testing the integration
+
+For testing that the API is working, we can use the following command:
+
+```bash
+docker-compose up
+```
+
+In the browser, we can access the following URL:
+localhost:8000
+
+and run the following GraphQL query:
+
+```graphql
+query {
+  menus {
+    name,
+    description
+  }
+}
+```

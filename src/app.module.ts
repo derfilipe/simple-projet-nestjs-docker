@@ -1,22 +1,12 @@
 import { Module } from '@nestjs/common';
 import { AppResolver } from './app.resolver';
-import { AppService } from './app.service';
-import { MongooseModule } from '@nestjs/mongoose';
-import { MenusModule } from './menus/menus.module';
-import { ClientsModule } from './clients/clients.module';
-import { GraphQLModule } from '@nestjs/graphql';
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { AppService } from './core/app.service';
+import { MenusModule } from './features/menus/menus.module';
+import { ClientsModule } from './features/clients/clients.module';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
-  imports: [
-    GraphQLModule.forRoot<ApolloDriverConfig>({
-      autoSchemaFile: 'schema.gql',
-      driver: ApolloDriver,
-    }),
-    MongooseModule.forRoot(process.env.MONGODB_URL),
-    MenusModule,
-    ClientsModule,
-  ],
+  imports: [DatabaseModule, MenusModule, ClientsModule],
   controllers: [],
   providers: [AppService, AppResolver],
 })
