@@ -1,7 +1,8 @@
-import { Query } from '@nestjs/graphql';
+import { Query, Resolver } from '@nestjs/graphql';
 import { MenusService } from './menus.service';
 import { Menu, MenuDocument } from './schemas/menu.schema';
 
+@Resolver(() => Menu)
 export class MenusResolver {
   constructor(private readonly menusService: MenusService) {}
 
