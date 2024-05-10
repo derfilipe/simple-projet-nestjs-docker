@@ -1,0 +1,38 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Menu {
+  name: String!
+  description: String!
+  price: Float!
+}
+
+type Query {
+  getHello: String!
+  menus: [Menu!]!
+  menu(_id: String!): Menu!
+}
+
+type Mutation {
+  createMenu(createMenuData: CreateMenusDto!): Menu!
+  updateMenu(updateMenuData: UpdateMenusDto!): Menu!
+  deleteMenu(deleteMenu: DeleteMenusDto!): Menu
+}
+
+input CreateMenusDto {
+  name: String!
+  description: String!
+  price: Float!
+}
+
+input UpdateMenusDto {
+  _id: String!
+  name: String!
+  description: String!
+  price: Float!
+}
+
+input DeleteMenusDto {
+  _id: String!
+}

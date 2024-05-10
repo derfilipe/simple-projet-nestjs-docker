@@ -1,6 +1,5 @@
 import { Module } from '@nestjs/common';
 import { ClientsService } from './clients.service';
-import { ClientsController } from './clients.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Client, ClientSchema } from './schemas/client.schema';
 
@@ -13,7 +12,7 @@ import { Client, ClientSchema } from './schemas/client.schema';
       },
     ]),
   ],
-  controllers: [ClientsController],
+  controllers: [],
   providers: [ClientsService],
 })
 export class ClientsModule {}

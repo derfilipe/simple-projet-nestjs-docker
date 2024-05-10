@@ -36,7 +36,7 @@ export class MenusResolver {
 
   @Query(() => [Menu], { name: 'menus' })
   async getMenus() {
-    return this.menusService.getMenus();
+    return this.menusService.findAll();
   }
 
   @Query(() => Menu, { name: 'menu' })

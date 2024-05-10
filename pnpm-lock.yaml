@@ -35,6 +35,9 @@ dependencies:
   class-validator:
     specifier: ^0.14.1
     version: 0.14.1
+  cors:
+    specifier: ^2.8.5
+    version: 2.8.5
   express-jwt:
     specifier: ^8.4.1
     version: 8.4.1
@@ -248,7 +251,7 @@ packages:
       express: 4.19.2
       graphql: 16.8.1
       loglevel: 1.9.1
-      lru-cache: 7.18.3
+      lru-cache: 7.13.1
       negotiator: 0.6.3
       node-abort-controller: 3.1.1
       node-fetch: 2.7.0
@@ -4412,6 +4415,11 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       yallist: 4.0.0
+
+  /lru-cache@7.13.1:
+    resolution: {integrity: sha512-CHqbAq7NFlW3RSnoWXLJBxCWaZVBrfa9UEHId2M3AW8iEBurbqduNexEUCGc3SHc6iCYXNJCDi903LajSVAEPQ==}
+    engines: {node: '>=12'}
+    dev: false
 
   /lru-cache@7.18.3:
     resolution: {integrity: sha512-jumlc0BIUrS3qJGgIkWZsyfAM7NCWiBcCDhnd+3NNM5KbBmLTgHVfWBcg6W+rLUsIpzpERPsvwUP7CckAQSOoA==}

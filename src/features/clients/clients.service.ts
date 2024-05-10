@@ -28,13 +28,13 @@ export class ClientsService {
   }
 
   update(
-    id: number,
+    id: string,
     updateClientDto: UpdateClientDto,
   ): Promise<ClientDocument> {
     return this.clientModel.findByIdAndUpdate(id);
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return this.clientModel.findByIdAndDelete(id);
   }
 

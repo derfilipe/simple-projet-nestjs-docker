@@ -1,7 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { Field, ObjectType } from '@nestjs/graphql';
-import { AbstractDocument } from '../../../database/abstract.schema';
 
 export type MenuDocument = Menu & Document;
 
@@ -9,7 +8,7 @@ export type MenuDocument = Menu & Document;
 @Schema({
   timestamps: { createdAt: 'created', updatedAt: 'updated' },
 })
-export class Menu extends AbstractDocument {
+export class Menu {
   @Field()
   @Prop({ required: true })
   name: string;
